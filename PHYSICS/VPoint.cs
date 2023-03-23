@@ -36,28 +36,11 @@ namespace PHYSICS
 
         public VPoint(int x, int y)
         {
-            Init(x, y, 0,0, Color.OrangeRed);
+            Init(x, y, 0,0);
         }
 
-        public VPoint(int x, int y, Image img)
-        {
-            Personaje(x, y, 0, 0, img);
-        }
-        public void Personaje(int x, int y, int vx, int vy, Image C)
-        {
-            pos = new Vec2(x, y);
-            old = new Vec2(x, y);
-            gravity = new Vec2(0, 1);
-            radius = 5f;
-            vel = new Vec2(vx, vy);
-            diameter = radius + radius;
-            Mass = 4f;
-            c = Color.OrangeRed;
-            brush = new SolidBrush(c);
-
-        }
-
-        public void Init(int x, int y, int vx, int vy, Color C)
+        
+        public void Init(int x, int y, int vx, int vy)
         {
             pos = new Vec2(x, y);
             old = new Vec2(x, y);

@@ -12,25 +12,28 @@ namespace PHYSICS
     {
         public List<VPoint> points;
         public List<VPole> poles;
-
-        public Rope(float x, float y, int segments, int intervale)
+        public Rope(VPoint start, VPoint end, int numSegments)
         {
             points = new List<VPoint>();
             poles = new List<VPole>();
-            for (int i=0; i < segments; i++)
+            float segmentDistance = (end.Pos.X - start.Pos.X) / (numSegments - 1);
+
+            for (int i = 0; i < numSegments; i++)
             {
-                points.Add(new VPoint((int)x + i * intervale, (int)y));
-                points[i].instance = false;
+                float x = start.Pos.X + i * segmentDistance;
+                float y = start.Pos.Y + (end.Pos.Y - start.Pos.Y) * i / (numSegments - 1);
+                points.Add(new VPoint((int)x, (int)y));
+                points[i].instance = (i == 0 || i == numSegments - 1);
                 points[i].Radius = 4;
             }
-            points[0].instance=true;
 
-            for(int j = 0; j < points.Count-1; j++)
+            for (int j = 0; j < points.Count - 1; j++)
             {
-                poles.Add(new VPole(points[j], points[j+1]));
+                poles.Add(new VPole(points[j], points[j + 1]));
             }
           
         }
+
         public void Render(Graphics g, int width, int height)
         {
             for (int i = 0; i < points.Count; i++)
@@ -43,20 +46,23 @@ namespace PHYSICS
                 poles[i].Render(g, width, height);
             }
 
+
         }
 
         public void RemovePoint(int index)
         {
-            // Ensure that the index is within bounds
             if (index >= 0 && index < points.Count)
             {
-                // If the point to be removed is the first point, update the instance flag of the new first point
+
                 if (index == 0 && points.Count > 1)
                 {
                     points[1].instance = true;
                 }
+                else if (index == points.Count - 1 && points.Count > 1)
+                {
+                    points[points.Count - 2].instance = true;
+                }
 
-                // Remove the point and any corresponding poles
                 points.RemoveAt(index);
                 if (index < poles.Count)
                 {
@@ -66,8 +72,11 @@ namespace PHYSICS
                 {
                     poles.RemoveAt(index - 1);
                 }
-                
+
             }
         }
+
+
+
     }
 }
