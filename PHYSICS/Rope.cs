@@ -24,7 +24,7 @@ namespace PHYSICS
                 float y = start.Pos.Y + (end.Pos.Y - start.Pos.Y) * i / (numSegments - 1);
                 points.Add(new VPoint((int)x, (int)y));
                 points[i].instance = (i == 0 || i == numSegments - 1);
-                points[i].Radius = 4;
+                points[i].Radius = 2;
             }
 
             for (int j = 0; j < points.Count - 1; j++)

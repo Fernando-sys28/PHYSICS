@@ -21,7 +21,7 @@ namespace PHYSICS
             stiffness = 15f;
             damp = 0.05f;
             length = a.Pos.Distance(b.Pos);
-            brush = new Pen(Color.Green);
+            brush = new Pen(Color.SaddleBrown);
             tot = a.Mass + b.Mass;
             m1 = b.Mass / tot;
             m2 = a.Mass / tot;

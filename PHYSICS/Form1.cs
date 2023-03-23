@@ -44,6 +44,7 @@ namespace PHYSICS
 
             R.perso.Add(new Personaje(new VPoint(pictureBox1.Width / 2+100, 320), Images.Personaje1));
             R.perso.Add(new Personaje(new VPoint(345, 100), Images.Dulce));
+            //R.perso.Add(new Personaje(new VPoint(0, 0), Images.CutTheRopeBackground));
 
             Rope rope = R.ropeList[0];
             Rope rope2 = R.ropeList[1];
@@ -62,7 +63,7 @@ namespace PHYSICS
             VPole newPole = new VPole(lastPoint, R.perso[1].persona);
             VPole newPole2 = new VPole(lastPoint2, R.perso[1].persona);
             rope.poles.Add(newPole);
-           rope.poles.Add(newPole2);
+            rope.poles.Add(newPole2);
 
             
 
@@ -77,7 +78,7 @@ namespace PHYSICS
             //b.Render(g, pictureBox1.Width, pictureBox1.Height);*/
 
             pictureBox1.Refresh();
-            g.Clear(Color.Black);
+            g.Clear(Color.Transparent);
             
             for (int i = 0; i < R.ropeList.Count; i++)
             {
@@ -131,6 +132,11 @@ namespace PHYSICS
             {
                 R.ropeList[ropeIndex].RemovePoint(pointIndex);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

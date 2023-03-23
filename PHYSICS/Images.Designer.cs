@@ -63,6 +63,26 @@ namespace PHYSICS {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cut_the_rope_feedme {
+            get {
+                object obj = ResourceManager.GetObject("cut_the_rope_feedme", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CutTheRopeBackground {
+            get {
+                object obj = ResourceManager.GetObject("CutTheRopeBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dulce {
             get {
                 object obj = ResourceManager.GetObject("Dulce", resourceCulture);
