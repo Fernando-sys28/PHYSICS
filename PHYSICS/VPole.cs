@@ -18,10 +18,10 @@ namespace PHYSICS
         {
             this.a = a;
             this.b = b;
-            stiffness = 15f;
-            damp = 0.05f;
+            stiffness = 20f;
+            damp = 0.04f;
             length = a.Pos.Distance(b.Pos);
-            brush = new Pen(Color.SaddleBrown);
+            brush = new Pen(Color.SaddleBrown,3);
             tot = a.Mass + b.Mass;
             m1 = b.Mass / tot;
             m2 = a.Mass / tot;

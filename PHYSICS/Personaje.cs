@@ -11,20 +11,20 @@ namespace PHYSICS
     {
         public Image textura;
         public VPoint persona;
-
-        public Personaje(VPoint a, Image img)
+        public Personaje(VPoint a, Image img, float r)
         {
             persona = a;
             Init(img);
+            persona.Radius= r;
         }
         public void Init(Image img)
-        {     
-            textura= img;
+        {
+            textura = img;
         }
 
         public void Render(Graphics g, int width, int height) {
 
-            g.DrawImage(textura, persona.Pos.X, persona.Pos.Y, textura.Width, textura.Height);
+            g.DrawImage(textura, persona.Pos.X - (persona.Radius), persona.Pos.Y - (persona.Radius), persona.diameter, persona.diameter);
         }
     }
 }

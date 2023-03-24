@@ -12,7 +12,7 @@ namespace PHYSICS
     {
         Vec2 pos, old, vel, gravity;
         public float Mass;
-        float radius, diameter, m, frict = 0.97f;
+        public float radius, diameter, m, frict = 0.97f;
         float groundFriction = 0.7f;
         Color c;
         int vx, vy;
@@ -38,8 +38,6 @@ namespace PHYSICS
         {
             Init(x, y, 0,0);
         }
-
-        
         public void Init(int x, int y, int vx, int vy)
         {
             pos = new Vec2(x, y);
@@ -48,7 +46,7 @@ namespace PHYSICS
             radius= 5f;
             vel=new Vec2(vx, vy);
             diameter = radius + radius;
-            Mass = 4f;
+            Mass = 10f;
             c= Color.OrangeRed;
             brush = new SolidBrush(c);
 
@@ -65,7 +63,6 @@ namespace PHYSICS
                     vel /= m;
                     vel *= (m * groundFriction);
                 }
-
                 old = pos;
                 pos += vel + gravity;
             }
@@ -83,7 +80,6 @@ namespace PHYSICS
             Constraints(width, height);
 
             g.FillEllipse(brush, pos.X - radius, pos.Y - radius, diameter, diameter);
-
         }
     }
 }

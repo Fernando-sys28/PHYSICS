@@ -29,12 +29,10 @@ namespace PHYSICS
             p4 = new VPole(d, a);
             p5 = new VPole(b, d);
             p6 = new VPole(c, a);
-
         }
 
         public void Render(Graphics g, int width, int height)
         {
-
             a.Render(g, width, height);
             b.Render(g, width, height);
             c.Render(g, width, height);
