@@ -11,11 +11,19 @@ namespace PHYSICS
     {
         public Image textura;
         public VPoint persona;
+        public bool colision { get; set; }
         public Personaje(VPoint a, Image img, float r)
         {
             persona = a;
             Init(img);
             persona.Radius= r;
+        }
+        public Personaje(VPoint a, Image img, float r,bool instance)
+        {
+            persona = a;
+            Init(img);
+            persona.Radius = r;
+            persona.instance = instance;
         }
         public void Init(Image img)
         {

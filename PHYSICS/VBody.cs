@@ -10,11 +10,16 @@ namespace PHYSICS
     {
         public List<Rope> ropeList;
         public List<Personaje> perso;
-        
+        public List<Personaje> estre;
+        public List<Estrellas> estrella;
+        public List<Personaje> spikeballs;
         public VBody() {
 
             ropeList = new List<Rope>();
             perso= new List<Personaje>();
+            estre= new List<Personaje>();
+            estrella = new List<Estrellas>();
+            spikeballs = new List<Personaje>();
         }
 
     }

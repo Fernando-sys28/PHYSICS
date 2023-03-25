@@ -10,3 +10,15 @@ C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\PHYSICS\PHYSICS\bin\
 C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.exe
 C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.pdb
 C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.Images.resources
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\bin\Debug\PHYSICS.exe.config
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\bin\Debug\PHYSICS.exe
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\bin\Debug\PHYSICS.pdb
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.csproj.AssemblyReference.cache
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.csproj.SuggestedBindingRedirects.cache
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.Form1.resources
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.Images.resources
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.Properties.Resources.resources
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.csproj.GenerateResource.cache
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.csproj.CoreCompileInputs.cache
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.exe
+C:\Users\FERNANDO\source\repos\PHYSICS\PHYSICS\obj\Debug\PHYSICS.pdb

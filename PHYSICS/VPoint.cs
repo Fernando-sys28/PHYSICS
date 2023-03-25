@@ -14,10 +14,11 @@ namespace PHYSICS
         public float Mass;
         public float radius, diameter, m, frict = 0.97f;
         float groundFriction = 0.7f;
-        Color c;
-        int vx, vy;
-        SolidBrush brush;
+        public Color c { get; set; }
+        public SolidBrush brush { get; set; }
         public bool instance;
+        public bool check=false;
+        int id;
         public Vec2 Pos
         {
             get { return pos; }
@@ -29,6 +30,12 @@ namespace PHYSICS
             set { radius = value; diameter = radius + radius; }
         }
 
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
         public static float Distance1(VPoint a, VPoint b)
         {
             return (float)Math.Sqrt(Math.Pow(b.pos.X - a.pos.X, 2) + Math.Pow(b.pos.Y - a.pos.Y, 2));
@@ -38,15 +45,33 @@ namespace PHYSICS
         {
             Init(x, y, 0,0);
         }
-        public void Init(int x, int y, int vx, int vy)
+
+        public VPoint(int x, int y,int id)
+        {
+            this.id = id;
+            Init(x, y, 0, 0);
+        }
+
+        public VPoint(int x, int y, bool instance)
+        {
+            this.instance = instance;
+            Init(x, y, 0, 0);
+        }
+
+        public VPoint(int x, int y,float vx, float vy)
+        {
+            Init(x, y, vx, vy);
+        }
+        public void Init(int x, int y, float vx, float vy)
         {
             pos = new Vec2(x, y);
             old = new Vec2(x, y);
             gravity = new Vec2(0, 1);
-            radius= 5f;
+            gravity *= 0.65f;
+            radius = 5f;
             vel=new Vec2(vx, vy);
             diameter = radius + radius;
-            Mass = 10f;
+            Mass = 4f;
             c= Color.OrangeRed;
             brush = new SolidBrush(c);
 
@@ -69,17 +94,19 @@ namespace PHYSICS
         }
         public void Constraints(int width, int height)
         {
-            if (pos.X > width - radius) pos.X = width - radius;
-            if (pos.X < radius) pos.X = radius;
-            if (pos.Y > height - radius) pos.Y = height - radius;
-            if (pos.Y < radius) pos.Y = radius;
+            if (pos.X > width - radius) { pos.X = width - radius; old.X = (pos.X + vel.X); }
+            if (pos.X < radius) { pos.X = radius; old.X = (pos.X + vel.X); }
+            if (pos.Y > height - radius) { pos.Y = height - radius; old.Y = (pos.Y + vel.Y); }
+            if (pos.Y < radius) { pos.Y = radius; old.Y = (pos.Y + vel.Y); }
         }
         public void Render(Graphics g, int width, int height)
         {
             Update(width, height);
             Constraints(width, height);
-
-            g.FillEllipse(brush, pos.X - radius, pos.Y - radius, diameter, diameter);
+            if (!check) {
+                g.FillEllipse(brush, pos.X - radius, pos.Y - radius, diameter, diameter);
+            }
+            
         }
     }
 }

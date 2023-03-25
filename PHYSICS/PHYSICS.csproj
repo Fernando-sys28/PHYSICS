@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Box.cs" />
+    <Compile Include="Estrellas.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +108,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Personaje2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estrella.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spike_ball.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spike.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

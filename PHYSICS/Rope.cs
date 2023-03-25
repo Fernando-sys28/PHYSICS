@@ -12,6 +12,30 @@ namespace PHYSICS
     {
         public List<VPoint> points;
         public List<VPole> poles;
+        public float inter { get; set; }
+
+        public Rope(float x, float y, int segments, float interval)
+        {
+            inter = interval;
+            points = new List<VPoint>();
+            poles = new List<VPole>();
+
+            for (int i = 0; i < segments; i++)
+            {
+                points.Add(new VPoint((int)(x + i * inter), (int)y));
+                points[i].Radius = 4f;
+                points[i].instance = (i == segments - 1);
+            }
+            points[0].instance=true;
+            points[0].Radius = 8f;
+            points[0].brush = new SolidBrush(Color.SteelBlue);
+
+            for (int j = 0; j < points.Count - 1; j++)
+            {
+                poles.Add(new VPole(points[j], points[j + 1]));
+            }
+        }
+
         public Rope(VPoint start, VPoint end, int numSegments)
         {
             points = new List<VPoint>();
@@ -20,18 +44,20 @@ namespace PHYSICS
 
             for (int i = 0; i < numSegments; i++)
             {
-                float x = start.Pos.X + i * segmentDistance;
+                float x = start.Pos.X + i * (segmentDistance);
                 float y = start.Pos.Y + (end.Pos.Y - start.Pos.Y) * i / (numSegments - 1);
                 points.Add(new VPoint((int)x, (int)y));
                 points[i].instance = (i == 0 || i == numSegments - 1);
-                points[i].Radius = 2f;
+                points[i].Radius = 4f;
             }
+            points[0].brush = new SolidBrush(Color.SteelBlue);
 
             for (int j = 0; j < points.Count - 1; j++)
             {
                 poles.Add(new VPole(points[j], points[j + 1]));
             }
         }
+
         public void Render(Graphics g, int width, int height)
         {
             for (int i = 0; i < points.Count; i++)
@@ -47,19 +73,17 @@ namespace PHYSICS
 
         public void RemovePoint(int index)
         {
+            
             if (index >= 0 && index < points.Count)
             {
-
-                if (index == 0 && points.Count > 1)
+                for (int i = points.Count - 2; i >= index; i--)
                 {
-                    points[1].instance = true;
+                    points.RemoveAt(i);
+                    if (i < poles.Count)
+                    {
+                        poles.RemoveAt(i);
+                    }
                 }
-                else if (index == points.Count - 1 && points.Count > 1)
-                {
-                    points[points.Count - 2].instance = true;
-                }
-
-                points.RemoveAt(index);
                 if (index < poles.Count)
                 {
                     poles.RemoveAt(index);
@@ -68,7 +92,6 @@ namespace PHYSICS
                 {
                     poles.RemoveAt(index - 1);
                 }
-
             }
         }
     }
