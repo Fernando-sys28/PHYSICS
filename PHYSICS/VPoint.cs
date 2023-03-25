@@ -36,6 +36,12 @@ namespace PHYSICS
             set { id = value; }
         }
 
+        public Vec2 GRAVITY
+        {
+            get { return gravity; }
+            set { gravity = value; }
+        }
+
         public static float Distance1(VPoint a, VPoint b)
         {
             return (float)Math.Sqrt(Math.Pow(b.pos.X - a.pos.X, 2) + Math.Pow(b.pos.Y - a.pos.Y, 2));

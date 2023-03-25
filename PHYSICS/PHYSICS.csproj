@@ -65,7 +65,6 @@
     <Compile Include="Rope.cs" />
     <Compile Include="VBody.cs" />
     <Compile Include="Vec2.cs" />
-    <Compile Include="VerletPlane.cs" />
     <Compile Include="VPoint.cs" />
     <Compile Include="VPole.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -101,15 +100,6 @@
     <None Include="Resources\CutTheRopeBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dulce.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Personaje1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Personaje2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\estrella.png" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +110,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\spike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globodulce-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\globodulce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dulce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Personaje1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Personaje2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

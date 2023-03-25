@@ -50,6 +50,7 @@ namespace PHYSICS
                 points[i].instance = (i == 0 || i == numSegments - 1);
                 points[i].Radius = 4f;
             }
+            points[0].Radius=10f;
             points[0].brush = new SolidBrush(Color.SteelBlue);
 
             for (int j = 0; j < points.Count - 1; j++)

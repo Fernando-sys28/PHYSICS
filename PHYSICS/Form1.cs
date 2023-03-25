@@ -25,13 +25,12 @@ namespace PHYSICS
         int count;
         bool collision, defeat;
         bool l1,l2,l3;
+        bool gravity;
+        bool quitar_globo;
         public Form1()
         {
-            InitializeComponent();
-              
-            init();
+            InitializeComponent();          
         }
-
 
         public void init()
         {
@@ -82,7 +81,51 @@ namespace PHYSICS
             R.estre.Add(new Personaje(new VPoint(600, 500), Images.estrella, 40));
             
         }
+        public void init3()
+        {
 
+            bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            g = Graphics.FromImage(bmp);
+            pictureBox1.Image = bmp;
+            R = new VBody();
+            initEstrellas();
+
+            R.ropeList.Add(new Rope(new VPoint(pictureBox1.Width / 2 - 150, 250), new VPoint(pictureBox1.Width / 2 + 50, 180), 6));
+            R.ropeList.Add(new Rope(new VPoint(pictureBox1.Width / 2 + 150, 250), new VPoint(pictureBox1.Width / 2 - 50, 180), 6));
+
+            R.perso.Add(new Personaje(new VPoint(pictureBox1.Width / 2+150, 570), Images.Personaje1, 40));
+            R.perso.Add(new Personaje(new VPoint(pictureBox1.Width / 2, 180), Images.Dulce, 40));
+
+            for (int b = 0; b < 15; b++)
+                R.spikeballs.Add(new Personaje(new VPoint(pictureBox1.Width / 2 - 300 + b * 16, (int)(300) + b * 4), Images.spike, 25, true));
+
+            for (int b = 0; b < 15; b++)
+                R.spikeballs.Add(new Personaje(new VPoint(pictureBox1.Width / 2 + 80 + b * 16, (int)(350) - b * 4), Images.spike, 25, true));
+
+            Vec2 r = new Vec2(0,-1);
+            R.perso[1].persona.GRAVITY = r;
+            for (int i = 0; i < R.ropeList.Count; i++)
+            {
+                Rope newRope = R.ropeList[i];
+                for (int j = 0; j < newRope.points.Count; j++)
+                {
+                    newRope.points[j].GRAVITY = r;
+                    gravity = true;
+                }
+            }
+            if (gravity)
+            {
+                R.perso[1].textura = Images.globodulce;
+            }
+
+            R.estre.Add(new Personaje(new VPoint(pictureBox1.Width / 2, 300), Images.estrella, 40));
+            R.estre.Add(new Personaje(new VPoint(pictureBox1.Width / 2, 400), Images.estrella, 40));
+            R.estre.Add(new Personaje(new VPoint(pictureBox1.Width / 2+150, 450), Images.estrella, 40));
+            JoinRopes(R.perso[1].persona);
+
+      
+
+        }
         public void initEstrellas()
         {
             R.estrella.Add(new Estrellas(1000, 10, Images.image));
@@ -177,6 +220,10 @@ namespace PHYSICS
                     {
                         init2();
                     }
+                    if (l3)
+                    {
+                        init3();
+                    }
                     count = 0;
                 }
                 else
@@ -209,12 +256,33 @@ namespace PHYSICS
                     {
                         init2();
                     }
+                    if(l3)
+                    {
+                        init3();
+                    }
                     count = 0;
                 }
                 else
                 {
                     Close();
                 }
+            }
+
+            if (quitar_globo)
+            {
+                Vec2 r2 = new Vec2(0, 1);
+               quitar_globo= false;
+                for (int i = 0; i < R.ropeList.Count; i++)
+                {
+                    Rope newRope = R.ropeList[i];
+                    for (int j = 0; j < newRope.points.Count; j++)
+                    {
+                        newRope.points[j].GRAVITY = r2;
+                        R.perso[1].textura = Images.Dulce;
+                        R.perso[1].persona.Radius = 30;
+                    }
+                }
+
             }
 
             pictureBox1.Invalidate();
@@ -231,7 +299,7 @@ namespace PHYSICS
             for (int i = 0; i < R.ropeList.Count; i++)
             {
                 Rope r = R.ropeList[i];
-                for (int j = 1; j < r.points.Count; j++)
+                for (int j = 1; j < r.points.Count-1; j++)
                 {
                     float distance = VPoint.Distance1(mousePoint, r.points[j]);
                     if (distance < minDistance)
@@ -296,6 +364,17 @@ namespace PHYSICS
                 }
             }
         }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            quitar_globo=true;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            init();
+        }
+
         public int CheckCollision()
         {
 
@@ -341,6 +420,8 @@ namespace PHYSICS
             l1 = false;
             l2 = false;
             l3 = true;
+            init3();
+            count = 0;
         }
 
         
