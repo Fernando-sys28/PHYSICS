@@ -21,7 +21,6 @@ namespace PHYSICS
         VPoint mousePoint;
         VBody R;
         public bool mouse,dibujar;
-        private Image background;
         int count;
         bool collision, defeat;
         bool l1,l2,l3;
@@ -138,8 +137,7 @@ namespace PHYSICS
         {
             mouse = true;
             collision = false;
-            background = Images.CutTheRopeBackground;
-            g.DrawImage(background, new Point(0, 0));
+            g.Clear(Color.Transparent);
             bool win = false;
              defeat = false;
             //dibujar ropes
@@ -373,6 +371,8 @@ namespace PHYSICS
         private void Form1_Load(object sender, EventArgs e)
         {
             init();
+            this.MaximumSize = SystemInformation.PrimaryMonitorMaximizedWindowSize;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         public int CheckCollision()
@@ -414,7 +414,6 @@ namespace PHYSICS
             init2();
             count = 0;
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             l1 = false;
@@ -422,9 +421,6 @@ namespace PHYSICS
             l3 = true;
             init3();
             count = 0;
-        }
-
-        
-
+        }   
     }
 }
